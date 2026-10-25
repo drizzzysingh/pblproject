@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="SLCM Compass — a private student companion for attendance, grade planning, risk estimates and notice deadlines.">
+  <title>SLCM Compass | Student Companion</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="SLCM Compass home">
+        <span class="brand-mark">C</span>
+        <span><strong>SLCM Compass</strong><small>Student companion</small></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="nav-tabs" aria-label="Main navigation" role="tablist">
+        <button class="nav-tab active" data-tab="overview" role="tab" aria-selected="true"><span>◫</span> Overview</button>
+        <button class="nav-tab" data-tab="attendance" role="tab" aria-selected="false"><span>◷</span> Attendance planner</button>
+        <button class="nav-tab" data-tab="grades" role="tab" aria-selected="false"><span>▤</span> Grade planner</button>
+        <button class="nav-tab" data-tab="risk" role="tab" aria-selected="false"><span>⌁</span> Shortfall risk</button>
+        <button class="nav-tab" data-tab="notices" role="tab" aria-selected="false"><span>▦</span> Notice reader</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-icon">✓</div>
+        <strong>Your data stays here</strong>
+        <p>This prototype runs in your browser. It does not connect to SLCM or send your data to a server.</p>
+        <span class="local-badge"><i></i> LOCAL-ONLY PROTOTYPE</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">STUDENT WORKSPACE / 2026–27</p>
+          <h1 id="page-title">Your semester, made clearer.</h1>
+          <p class="subtitle" id="page-subtitle">A single place to plan attendance, grades and important dates.</p>
+        </div>
+        <div class="top-actions">
+          <span class="sample-tag"><span></span> Sample data</span>
+          <button id="reset-demo" class="button button-ghost" type="button">Reset demo</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-overview" role="tabpanel">
+        <div class="welcome-card">
+          <div class="welcome-copy">
+            <span class="pill pill-light">YOUR STUDENT COMPANION</span>
+            <h2>Know where you stand.<br><em>Choose your next move.</em></h2>
+            <p>Turn the numbers you already have into practical next steps. Enter your own figures or explore the sample semester.</p>
+            <button class="button button-light" data-go="attendance" type="button">Plan my attendance <span>↗</span></button>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="art-card art-card-main"><span class="art-card-label">ATTENDANCE</span><strong>78.4<small>%</small></strong><div class="mini-track"><i></i></div><span class="art-card-foot">Across 5 subjects</span></div>
+            <div class="art-chip"><span>↗</span><div><strong>3 modules</strong><small>ready to explore</small></div></div>
+            <div class="art-dot dot-one"></div><div class="art-dot dot-two"></div>
+          </div>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">AT A GLANCE</p><h2>Semester snapshot</h2></div><span class="muted">Illustrative sample values</span></div>
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span>Overall attendance</span><span class="metric-icon purple">◷</span></div><strong id="overview-attendance">78.4%</strong><p><span class="status-dot amber"></span> 2 subjects below minimum</p></article>
+          <article class="metric-card"><div class="metric-top"><span>Semester SGPA</span><span class="metric-icon blue">▤</span></div><strong id="overview-sgpa">8.38</strong><p>Weighted by course credits</p></article>
+          <article class="metric-card"><div class="metric-top"><span>Upcoming deadlines</span><span class="metric-icon orange">▦</span></div><strong id="overview-deadlines">5</strong><p>Found in sample notice</p></article>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">TAKE ACTION</p><h2>Quick planning</h2></div></div>
+        <div class="quick-grid">
+          <button class="quick-card" data-go="attendance" type="button"><span class="quick-icon purple">◷</span><span><strong>Attendance planner</strong><small>Check skip budgets and recovery runs</small></span><span class="quick-arrow">↗</span></button>
+          <button class="quick-card" data-go="grades" type="button"><span class="quick-icon blue">▤</span><span><strong>Grade planner</strong><small>Forecast SGPA and your next CGPA</small></span><span class="quick-arrow">↗</span></button>
+          <button class="quick-card" data-go="risk" type="button"><span class="quick-icon green">⌁</span><span><strong>Shortfall risk</strong><small>Explore an explained placeholder estimate</small></span><span class="quick-arrow">↗</span></button>
+          <button class="quick-card" data-go="notices" type="button"><span class="quick-icon orange">▦</span><span><strong>Notice reader</strong><small>Find dates and topics in pasted text</small></span><span class="quick-arrow">↗</span></button>
+        </div>
+        <div class="notice-banner"><span class="banner-icon">i</span><p><strong>Prototype note:</strong> Sample values are for demonstration only. Risk weights are hand-set placeholders, and notice extraction uses rules—not trained machine-learning models.</p></div>
+      </section>
+
+      <section class="view" id="view-attendance" role="tabpanel">
+        <div class="section-heading page-section"><div><p class="eyebrow">MODULE 01</p><h2>Attendance planner</h2><p class="section-desc">Understand each subject, then make a plan before the next class.</p></div><label class="threshold-control">Minimum attendance <input id="threshold" type="number" min="1" max="99" value="75"> <span>%</span></label></div>
+        <div class="metric-grid compact">
+          <article class="metric-card"><div class="metric-top"><span>Overall attendance</span><span class="metric-icon purple">◷</span></div><strong id="overall-attendance">78.4%</strong><p>Weighted across all entered classes</p></article>
+          <article class="metric-card"><div class="metric-top"><span>Subjects to recover</span><span class="metric-icon orange">!</span></div><strong id="below-count">2</strong><p>Currently below your minimum</p></article>
+          <article class="metric-card"><div class="metric-top"><span>At the limit</span><span class="metric-icon blue">＝</span></div><strong id="limit-count">1</strong><p>Do not miss the next class</p></article>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>Subject breakdown</h3><p>Edit the figures to match your portal.</p></div><button id="add-subject" class="button button-secondary" type="button">＋ Add subject</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Subject</th><th>Attended</th><th>Held</th><th>Attendance</th><th>Status & advice</th><th></th></tr></thead><tbody id="attendance-rows"></tbody></table></div>
+        </div>
+        <div class="panel planner-panel">
+          <div class="panel-heading"><div><h3>“If I skip some, where do I end up?”</h3><p>Project a subject’s attendance after upcoming classes.</p></div><span class="pill">WHAT-IF PLANNER</span></div>
+          <div class="form-grid">
+            <label>Subject<select id="planner-subject"></select></label>
+            <label>Classes still to be held<input id="future-classes" type="number" min="0" value="20"></label>
+            <label>Classes you plan to miss<input id="planned-misses" type="number" min="0" value="3"></label>
+          </div>
+          <div id="projection-result" class="result-panel"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-grades" role="tabpanel">
+        <div class="section-heading page-section"><div><p class="eyebrow">MODULE 02</p><h2>SGPA & CGPA planner</h2><p class="section-desc">Model a semester result using credits and grade points.</p></div><span class="pill pill-soft">CREDIT-WEIGHTED</span></div>
+        <div class="metric-grid compact">
+          <article class="metric-card"><div class="metric-top"><span>Projected SGPA</span><span class="metric-icon blue">▤</span></div><strong id="sgpa-result">8.38</strong><p>Current course plan</p></article>
+          <article class="metric-card"><div class="metric-top"><span>Updated CGPA</span><span class="metric-icon purple">↗</span></div><strong id="cgpa-result">7.87</strong><p>After this semester</p></article>
+          <article class="metric-card"><div class="metric-top"><span>Credits this semester</span><span class="metric-icon green">＋</span></div><strong id="semester-credits">16</strong><p>From your listed courses</p></article>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>Course grade assumptions</h3><p>Change credits or grade points to test a scenario.</p></div><button id="add-course" class="button button-secondary" type="button">＋ Add course</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Course</th><th>Credits</th><th>Grade point (0–10)</th><th></th></tr></thead><tbody id="course-rows"></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>CGPA target calculator</h3><p>Find the semester SGPA required to reach a target.</p></div></div>
+          <div class="form-grid three">
+            <label>Previous CGPA<input id="previous-cgpa" type="number" min="0" max="10" step="0.01" value="7.8"></label>
+            <label>Credits completed before<input id="previous-credits" type="number" min="0" value="120"></label>
+            <label>Target CGPA<input id="target-cgpa" type="number" min="0" max="10" step="0.01" value="8.0"></label>
+          </div>
+          <div id="target-result" class="result-panel"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-risk" role="tabpanel">
+        <div class="section-heading page-section"><div><p class="eyebrow">MODULE 03</p><h2>Shortfall risk estimate</h2><p class="section-desc">Explore how attendance, marks and completion affect the prototype estimate.</p></div><span class="pill pill-warning">NOT VALIDATED</span></div>
+        <div class="notice-banner warning"><span class="banner-icon">!</span><p><strong>Important:</strong> This is an illustrative estimate from hand-set weights, not a trained model or a reliable prediction about a real student. Do not use it as an official academic decision.</p></div>
+        <div class="risk-layout">
+          <div class="panel">
+            <div class="panel-heading"><div><h3>Student indicators</h3><p>Move a slider to explore the model.</p></div><button id="use-overall" class="button button-secondary" type="button">Use overall attendance</button></div>
+            <div class="slider-field"><div><label for="risk-attendance">Attendance</label><output id="risk-attendance-out">72%</output></div><input id="risk-attendance" type="range" min="0" max="100" value="72"></div>
+            <div class="slider-field"><div><label for="risk-trend">Recent attendance trend</label><output id="risk-trend-out">−3 points</output></div><input id="risk-trend" type="range" min="-10" max="10" value="-3"></div>
+            <div class="slider-field"><div><label for="risk-marks">Internal marks</label><output id="risk-marks-out">58%</output></div><input id="risk-marks" type="range" min="0" max="100" value="58"></div>
+            <div class="slider-field"><div><label for="risk-assignments">Assignment completion</label><output id="risk-assignments-out">75%</output></div><input id="risk-assignments" type="range" min="0" max="100" value="75"></div>
+          </div>
+          <div class="panel risk-result-card"><span class="eyebrow">MODEL OUTPUT</span><div class="risk-number" id="risk-percent">48<span>%</span></div><span id="risk-level" class="risk-level moderate">Moderate estimate</span><p>Based only on the inputs shown here.</p><div class="risk-track"><i id="risk-track-fill"></i></div><div class="panel-divider"></div><h3>Contribution terms</h3><p class="small-muted">These terms explain the placeholder formula; they are not evidence of real-world causation.</p><div id="risk-contributions" class="contribution-list"></div></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-notices" role="tabpanel">
+        <div class="section-heading page-section"><div><p class="eyebrow">MODULE 04</p><h2>Notice reader</h2><p class="section-desc">Paste a university notice to find recognised dates, times and topics.</p></div><span class="pill pill-soft">RULE-BASED</span></div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>Notice text</h3><p>Uses day-first dates such as 02/11/2026 or 9 November 2026.</p></div><button id="load-notice" class="button button-secondary" type="button">Load sample</button></div>
+          <textarea id="notice-text" rows="9" placeholder="Paste the notice text here..."></textarea>
+          <div class="notice-actions"><span class="small-muted">Text is processed in your browser.</span><button id="find-deadlines" class="button button-primary" type="button">Find deadlines <span>→</span></button></div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>Recognised dates</h3><p id="notice-summary">Your extracted deadlines will appear here.</p></div><span id="notice-count" class="count-badge">0 items</span></div>
+          <div id="notice-results" class="deadline-list empty-state">Paste a notice and select “Find deadlines” to get started.</div>
+        </div>
+        <div class="notice-banner"><span class="banner-icon">i</span><p>This lightweight reader recognises only selected date formats and keyword-based topics. Always verify extracted deadlines against the original official notice.</p></div>
+      </section>
+
+      <footer class="footer"><span>© 2026 SLCM Compass · Student project prototype</span><span>Unofficial companion · Not connected to SLCM</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
