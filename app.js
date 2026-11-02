@@ -18,10 +18,10 @@ Semester results are expected on 12 December 2026.`;
   const defaultState = () => ({
     threshold: 75,
     subs: [
-      { n: "Natural Language Processing", a: 31, t: 38 },
-      { n: "Business Process Mining", a: 27, t: 36 },
-      { n: "Deep Learning", a: 24, t: 34 },
-      { n: "Cloud Computing", a: 33, t: 35 },
+      { n: "Machine Learning", a: 31, t: 38 },
+      { n: "ACDT", a: 27, t: 36 },
+      { n: "Computer Networks", a: 24, t: 34 },
+      { n: "Webtech", a: 33, t: 35 },
       { n: "Open Elective", a: 16, t: 24 }
     ],
     courses: [
